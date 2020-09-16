@@ -16,7 +16,7 @@ minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt"
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Site Title"
+title                    : "Dobby's Computer Study Space"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "tryingsunwoo"
@@ -129,7 +129,7 @@ footer:
       # url:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      # url:
+      # url: "https://github.com/tryingsunwoo"
     - label: "GitLab"
       icon: "fab fa-fw fa-gitlab"
       # url:
@@ -279,3 +279,15 @@ defaults:
       comments: # true
       share: true
       related: true
+  # _pages
+  - scope:
+    path: ""
+      type: pages
+    values:
+      layout: single
+      author_profile: true
+      read_time: false
+      comments: false
+      share: true
+      related: false
+    
