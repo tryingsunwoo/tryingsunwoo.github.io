@@ -75,7 +75,7 @@ facebook:
   username               :
   app_id                 :
   publisher              :
-og_image                 : # Open Graph/Twitter default site image
+og_image                 : # "https://github.com/tryingsunwoo/tryingsunwoo.github.io/blob/master/assets/image/me/dobbyisfree.jpg?raw=true"
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
 social:
@@ -93,8 +93,8 @@ analytics:
 
 # Site Author
 author:
-  name             : "tryingsunwoo"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  name             : "tryingsunwoo" 
+  avatar           : "/assets/image/me/dobbyisfree.jpg"
   bio              : "a college student majoring in computers."
   location         : "South Korea"
   email            :
@@ -281,7 +281,7 @@ defaults:
       related: true
   # _pages
   - scope:
-    path: ""
+      path: ""
       type: pages
     values:
       layout: single
