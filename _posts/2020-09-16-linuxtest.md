@@ -1,5 +1,5 @@
 ---
-title: "grep, find pratice"
+title: "grep, find practice"
 excerpt: "grep , find 연습"
 toc: true
 toc_sticky: true
