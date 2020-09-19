@@ -4,7 +4,7 @@ excerpt: "압축과 아카이브의 차이"
 toc: true
 toc_sticky: true
 categories:
-- linux 기본
+- linux
 tags:
 - linux
 last_modified_at: 2020-09-19

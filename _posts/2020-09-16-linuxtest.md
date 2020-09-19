@@ -4,9 +4,10 @@ excerpt: "grep , find 연습"
 toc: true
 toc_sticky: true
 categories:
-- linux 기본
+- linux
 tags:
 - linux
+- practice
 last_modified_at: 2020-09-15
 ---
 ## grep 명령어 연습

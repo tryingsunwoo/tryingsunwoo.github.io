@@ -2,10 +2,10 @@
 main:
   - title: "Categories"
     url: /categories/
-  - title: "Tags"
-    url: /tags/
-  - title : "linux 기본"
-    url: /categories/linux 기본/
+  #- title: "Tags"
+  #  url: /tags/
+  #- title : "linux"
+  #  url: /categories/linux/
   #- title: "Categories"
   #  url: /categories/
   # - title: "Sample Posts"
