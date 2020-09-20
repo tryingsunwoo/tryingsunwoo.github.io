@@ -74,5 +74,5 @@ x: extract
 ```
 ## tar.gz 압축풀기
 ```console
-tar zxvf <묶음파일명.tar.gz>
+# tar zxvf <묶음파일명.tar.gz>
 ```

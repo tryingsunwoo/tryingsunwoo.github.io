@@ -74,38 +74,38 @@ egrep '(pattern1|pattern2|pattern3)'
 ## 정답
 1. /test 디렉토리의 파일과 디렉토리 개수 확인하기
 ```console
-find /test -type f -o -type d | wc -l
+# find /test -type f -o -type d | wc -l
 ```
 
 2. /test 디렉토리 내의 파일중에 용량이 1G이상으로서 team01 계정의 권한으로 설정되어 있는 파일을 검색하여 자동 삭제하기
 ```console
-find /test -size +1G -user team01 -type f  -exec rm -fv {} \;
+# find /test -size +1G -user team01 -type f  -exec rm -fv {} \;
 ```
 3. /test 디렉토리의 파일에서 system 문자가 들어있는 모든 파일을 찾고 해당 파일들의 목록을 /training 디렉토리에 exam1로 저장한다.
 ```console
-grep -lr system /test > /training/exam1
+# grep -lr system /test > /training/exam1
 ```
 참고 
 ```console
-find /test -type f -exec grep -l system {} \;
+# find /test -type f -exec grep -l system {} \;
 ```
 4. /test 디렉토리에서 setUID가 설정되어 있는 파일 찾기
 ```console
-find /test -perm -4000 -type f -exec ls -l {} \;
+# find /test -perm -4000 -type f -exec ls -l {} \;
 ```
 5. /test 디렉토리의 모든 디렉토리의 소유자를 team33 그룹소유자를 team50으로 변경
 ```console
-find /test -type d -exec chown -v team33:team50 {} \;
+# find /test -type d -exec chown -v team33:team50 {} \;
 ```
 > 해당 작업을 하면서 출력 로그를 확인하면서 바로 저장한다. + 에러결과를 따로 저장한다.
 ```console
-find /test -type d -exec chown -v team33:team50 {} \; 2> /root/errlog.log | tee -a /root/chowncheck.log
+# find /test -type d -exec chown -v team33:team50 {} \; 2> /root/errlog.log | tee -a /root/chowncheck.log
 ```
 
 6./test 디렉토리의 모든 파일을 소유자 team02 그룹소유자를 team50으로 변경
 > 해당 작업을 하면서 출력 로그를 확인하면서 바로 저장한다. + 에러 결과를 같이 저장한다.
 ```console
-find /test -type f -exec chown -v team02:team50 {} \; 2>&1 | tee -a /root/filechown.log
+# find /test -type f -exec chown -v team02:team50 {} \; 2>&1 | tee -a /root/filechown.log
 ```
 7.
 
@@ -121,7 +121,7 @@ drwxrwxrwx. 2 root root 6 Sep 14 20:56 /goott/
 
 9. 쓸데없이 용량을 사용중인 디렉토리 찾기
 ```console
-du -sk /* | sort
+# du -sk /* | sort
 [root@nohost ~]# du -k 
 4	./.cache/dconf
 4	./.cache

@@ -1,0 +1,50 @@
+---
+title: "VM에 DiSK 추가 후 scan 작업"
+excerpt: "디스크 추가 할당 후, 인식 안될 때 scan 작업"
+toc: true
+toc_sticky: true
+categories:
+- linux
+tags:
+- linux
+last_modified_at: 2020-09-20
+
+---
+## 장치 인식
+* 장치 추가
+Rescan > find > echo "- - -" ~
+
+### 디스크 추가 절차
+* 서버는 온라인 상태에서 디스크를 재인식하고 사용이 가능하여야함. 서비스 중에 디스크를 추가하는 경우가 많은데 추가 할 때마다 재부팅을 할 수는 없다. 따라서 서버가 운용중에도 디스크를 추가할 수 있도록 숙지해야한다.
+
+시스템에 부착된 SCSI 디바이스를 확인하기 위하여 사용하는 명령어이다.
+```console
+# lsscsi
+[0:0:0:0]    disk    VMware,  VMware Virtual S 1.0   /dev/sda 
+[2:0:0:0]    cd/dvd  NECVMWar VMware IDE CDR10 1.00  /dev/sr0
+```
+
+```console
+# lsblk
+```
+해당 명령어를 통해 장착되어 있는 디바이스 확인 가능
+
+```console
+# find /sys/devices -name scan -exec ls -l {} \;
+```
+* 디스크 디바이스 재검색을 위해 사용하는 scan 파일의 위치를 확인하는 명령어
+
+```console
+# echo "- - -" > 스캔파일명
+```
+* 해당 명령어 형식으로 스캔된 파일 추가 가능하다.
+해당 값들은 "- - -" 와일드 카드로 대체되어 본래의 pci 카드 연결 값이 입력됨.
+
+```console
+# echo "- - -" > /sys/devices/pci0000:00/0000:00:10.0/host0/scsi_host/host0/scan
+```
+이런식으로 스캔된 파일을 추가한 뒤
+```console
+# lsscsi
+```
+를 통해 추가된 디스크를 확인해보자.
