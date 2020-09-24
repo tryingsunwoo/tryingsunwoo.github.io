@@ -76,3 +76,99 @@ useradd CMD     /* 사용자 정보 추가 명령어 */
 usermod CMD     /* 사용자 정보 변경 명령어 */
 userdel CMD     /* 사용자 정보 삭제 명령어 */
 ```
+##### useradd 명령어
+* adduser도 가능함
+
+```console
+[root@server1 ~]# groupadd -g 62000 g1   : 그룹생성 GID를 62000번으로 고정 부여
+-g 주 그룹을 설정하는 경우에 사용
+
+[root@server1 ~]# cat /etc/group | grep g1 
+g1:x:62000:         : ㅎgid가 62000인 그룹 g1을 만듦
+
+[root@server1 ~]# useradd -u 2000 -g g1 test2
+[root@server1 ~]# useradd -G g1 test3
+-G 지정된 그룹으로 가입을 시키는 경우에 사용하는 옵션
+
+[root@server1 ~]# useradd -c "Test account test5" test5
+-c 계정에 무언가 메모를 남기듯이 사용하는 옵션
+
+[root@server1 ~]# useradd -u 1005 test7
+UID 1005번으로 지정
+```
+
+* 계정을 생성할때 기초 파일 생성 위치
+```console
+[root@server1 ~]# ls -ld /etc/ske
+drwxr-xr-x. 3 root root 92  9월 24 01:14 /etc/skel
+```
+추가로 파일을 생성하여 skel 디렉토리에 복사 되는지 확인
+```console
+[root@server1 skel]# pwd
+/etc/skel
+```
+
+```console
+[root@server1 skel]# echo "skel dir TEST" > file1.txt
+[root@server1 skel]# useradd skeluser
+[root@server1 skel]# echo 'skeluser' | passwd --stdin skeluser
+[root@server1 skel]# ssh skeluser@localhost
+[skeluser@server1 ~]$ ls
+file1.txt
+
+[skeluser@server1 ~]$ exit
+[root@server1 ~]# cp -r /etc/skel/ /etc/skel2
+[root@server1 ~]# cd /etc/skel2
+[root@server1 skel2]# cp file1.txt file2.txt
+[root@server1 skel2]# useradd -mk /etc/skel2 skel2
+```
+skel 디렉토리를 지정하여 계정 생성
+/etc/skel 디렉토리에 존재하는 파일들의 경우에는 계정을 생성하면서 여러가지 계정에 필요한 파일들을 자동 복사해준다. 파일의 권한은 생성되는 게정의 권한으로 전환된다.
+
+SKEL에 필요한 디렉토리를 여러가지 만들어두고 필요한 경우 변경해서 사용하면 편하다.
+EX : 관리자 계정용 SKEL , 일반 계정용 SKEL
+
+```console
+[root@server1 ~]# useradd -D  : 기본값 파일
+```
+
+##### usermod 명령어
+* 계정의 정보를 변경하는 경우에 사용하는 명령어
+* 주요 옵션
+```console
+usermod -u 2000 user01
+usermod -s /bin/ksh user01
+usermod -g 10 -c "Test Group" user01 
+usermod -l user03 -d /home/user03 -m user01  (-l : login name, -m : move directory)
+```
+
+##### userdel 명령어
+## userdel 명령어
+* 더이상 해당 시스템에서 사용이 되지 않는 경우에 사용자 삭제
+ex) 퇴사, 서비스종료, 밴, 프로젝트 계정의 경우 프로젝트 종료 시점에 삭제
+
+```console
+userdel user01       /* /etc/passwd, /etc/shadow 정보 삭제 */
+userdel -r user01    /* /etc/passwd, /etc/shadow + Home Directory 삭제 */
+```
+
+#### 그룹관리
+* 그룹 정보 파일위치 /etc/group
+##### group추가
+```console
+groupadd class1
+groupadd -g 1000 class1
+```
+##### group 정보 변경
+* groupmod
+```console
+[root@server1 ~]# groupmod -g 61235 class1
+GID 번호 변경
+[root@server1 ~]# groupmod -n g1 class1
+이름 변경
+```
+##### group 삭제
+* groupdel
+```console
+[root@server1 ~]# groupdel g1
+```
