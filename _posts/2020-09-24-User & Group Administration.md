@@ -11,8 +11,7 @@ last_modified_at: 2020-09-23
 
 ---
 ## 계정관리
-
-#### 계정이란?
+### 계정이란?
 * 신원 증명
 이 시스템에 권한이 있는 사용자가 특정 자원에 대해 접근할 때 이 사람이 접근할 수 있는지를 계정으로 구분하기 위해서
 * 그룹 - 큰 의미의 신원증명, 권한에 대하여 좀 더 한번에 설정을 할 수 있는 특수권한.
@@ -143,7 +142,6 @@ usermod -l user03 -d /home/user03 -m user01  (-l : login name, -m : move directo
 ```
 
 ##### userdel 명령어
-## userdel 명령어
 * 더이상 해당 시스템에서 사용이 되지 않는 경우에 사용자 삭제
 ex) 퇴사, 서비스종료, 밴, 프로젝트 계정의 경우 프로젝트 종료 시점에 삭제
 
@@ -160,7 +158,7 @@ groupadd class1
 groupadd -g 1000 class1
 ```
 ##### group 정보 변경
-* groupmod
+groupmod
 ```console
 [root@server1 ~]# groupmod -g 61235 class1
 GID 번호 변경
